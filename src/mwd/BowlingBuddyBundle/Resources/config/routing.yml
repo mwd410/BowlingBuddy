@@ -1,0 +1,66 @@
+#Outside Actions
+
+homepage:
+    pattern:  /home
+    defaults: { _controller: BBMainBundle:Default:index }
+
+register:
+    pattern:  /register
+    defaults: { _controller: BBMainBundle:Default:register }
+    
+    
+login:
+    pattern:  /login
+    defaults: { _controller: BBMainBundle:Security:login }
+
+login_check:
+    pattern:  /login_check
+    
+logout:
+    pattern: /logout
+
+#Inside Actions
+ 
+history:
+    pattern:  /bb/history
+    defaults: { _controller: BBMainBundle:Inside:history }
+    
+account:
+    pattern:  /bb/account
+    defaults: { _controller: BBMainBundle:Inside:account }
+    
+bowlerHistory:
+    pattern:  /bb/history/{id}
+    defaults: { _controller: BBMainBundle:Inside:history }
+    
+#Account Actions
+create_account:
+    pattern:  /createaccount
+    defaults: { _controller: BBMainBundle:Account:createAccount }
+    
+editAccount:
+    pattern:  /bb/editaccount
+    defaults: { _controller: BBMainBundle:Account:edit }
+    
+#Bowler Actions
+createBowler:
+    pattern:  /bb/createbowler
+    defaults: { _controller: BBMainBundle:Bowler:createBowler }
+    
+editBowler:
+    pattern: /bb/editbowler
+    defaults: { _controller: BBMainBundle:Bowler:edit }
+    
+deleteBowler:
+    pattern: /bb/deletebowler
+    defaults: { _controller: BBMainBundle:Bowler:delete }
+    
+#Session Actions
+createSession:
+    pattern: /bb/createsession
+    defaults: { _controller: BBMainBundle:Session:create }
+    
+#Game Actions
+createGame:
+    pattern: /bb/creategame
+    defaults: { _controller: BBMainBundle:Game:create }

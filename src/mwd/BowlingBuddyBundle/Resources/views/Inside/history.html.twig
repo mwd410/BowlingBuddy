@@ -1,0 +1,39 @@
+{# empty Twig template #}
+
+{% extends 'BBMainBundle:Inside:inside.html.twig' %}
+{% block head %}
+    {% javascripts '@BBMainBundle/Resources/public/js/history.js'%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+<style>
+        #history-tb {
+            background: #7F3706;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="top">
+        <h2>Bowler History {% if bowler %}for {{bowler.name}}{% endif %}</h2>
+        <div id="bowler-select" class="change-button">
+            <ul>
+            {% for b in bowlers %}
+                    <li><a href="{{ path('bowlerHistory', {'id': b.id}) }}">{{b.name}}</a></li>
+            {% else %}
+                    <li><a href="{{ path('account') }}">Add a Bowler</a></li>
+            {% endfor %}
+                </ul>
+            </div>
+            <span class="top-right">
+                {%if bowler %}
+                    <a href="{{ path('createSession') }}" id="create-session" bowler="{{bowler.id}}">Add Session</a>
+                {% endif %}
+                </span>
+            </div>
+            <div id="sessions">
+            {% if bowler %}
+                {% for session in bowler.sessions %}
+                    {% include "BBMainBundle:Session:session.html.twig" with {"session" : session} %}
+                {% endfor %}
+            {% endif %}
+                </div>
+{% endblock %}

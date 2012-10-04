@@ -1,0 +1,24 @@
+<div>
+    <div id="bowler_{{bowler.id}}" class="bowler-div">
+        <span class="bowler-name">
+            <a href="{{ path('bowlerHistory', {"id" : bowler.id}) }}">{{bowler.name}}</a>
+        </span>
+            <span class="main-bowler-indicator" {%if bowler.id == mainBowler%}style="display: inline;"{%endif%}>(Main Bowler)</span>
+        <span><a href="#" bowler="{{bowler.id}}" class="edit-bowler">Edit</a></span>
+        <span class="bowler-delete">
+            <a href="{{ path('deleteBowler') }}" bowler="{{bowler.id}}">Delete Bowler</a>
+        </span>
+    </div>
+    <div id="bowler_details_{{bowler.id}}" class="bowler-details">
+        <span><a href="{{ path('editBowler') }}" id="edit_{{bowler.id}}" bowler="{{bowler.id}}" class="edit-name">Change Name</a></span>
+        <span id="edit_name_{{bowler.id}}" class="edit-name-form">
+            <input type="text" id="name_input_{{bowler.id}}" />
+        </span>
+        <span>
+            <a href="{{ path('editAccount') }}" class="edit-main-bowler" bowler="{{bowler.id}}">Set As Main</a>
+        </span>
+        <div>
+            Sessions: <span></span>
+        </div>
+    </div>
+</div>

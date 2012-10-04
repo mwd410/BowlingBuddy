@@ -1,0 +1,8 @@
+{% extends 'BBMainBundle:Default:base.html.twig' %}
+{% block toolbar %}
+<ul>
+    <li id="history-tb"><a href="{{ path('history') }}">History</a></li>
+    <li id="statistics-tb">Statistics</li>
+    <li id="account-tb"><a href="{{ path('account') }}">Account</a></li>
+</ul>
+{% endblock %}

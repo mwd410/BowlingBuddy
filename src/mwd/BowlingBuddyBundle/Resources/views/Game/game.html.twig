@@ -1,0 +1,35 @@
+<div id="game_{{game.id}}" class="game">
+  <div class="game-header">
+    <span class="game-title">Game </span>
+    <span class="edit-game"><a href="#" gameId="{{game.id}}" sessionId="{{game.session.id}}">Edit</a></span>
+  </div>
+  <div class="game-details">
+    <div class="game-details-wrapper">
+      <div class="frame-edit">
+      </div>
+
+      <table class="string-table">
+        <thead class="string-header">
+          <tr>
+            <th style="text-align: left;">
+        <div id="add_bowler_to_game_{{game.id}}" class="add-bowler-to-game">
+          <a href="#" gameId="{{game.id}}">Add</a>
+          <ul>
+            {% for b in bowlers %}
+            <li><a href="#" bowlerId="<%=b.getId()%>" gameId="{{game.id}}">{{b.name}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        </th>
+        {% for i in range(1,10) %}
+        <th class="frame-header" id="game_{{game.id}}_frame_{{i}}">{{i}}</th>
+        {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

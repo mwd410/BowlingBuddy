@@ -1,0 +1,29 @@
+<div id="session_{{session.id}}" class="session">
+  <div class="session-div">
+    <span class="session-title">
+      <a href="#" id="session_title_{{session.id}}" sessionId="{{session.id}}">Session on {{session.created|date("M d, Y")}}</a>
+    </span>
+  </div>
+  <div id="session_details_wrapper_{{session.id}}" class="session-details-wrapper" sessionId="{{session.id}}">
+    <div class="session-details">
+      <div class="session-bowlers">
+        <div>
+          <h3>Bowlers</h3>
+        </div>
+      </div>
+      <div class="session-games">
+        <div class="game-list-header"> 
+          <div id="game_list_header_{{session.id}}">
+            <span class="game-list-title">Games</span>
+            <span class="game-list-add"><a href="{{ path('createGame') }}" class="add-game" sessionId="{{session.id}}">Add</a></span>
+          </div>
+        </div>
+        <div id="games_{{session.id}}">
+            {% for game in session.games %}
+               {% include "BBMainBundle:Game:game.html.twig" with {"game": game} %}
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

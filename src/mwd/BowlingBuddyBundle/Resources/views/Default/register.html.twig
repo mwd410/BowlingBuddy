@@ -1,0 +1,40 @@
+{# registration template #}
+
+{% extends 'BBMainBundle:Default:outside.html.twig' %}
+{% block content %}
+<div class="register-form">
+    <h2>Register:</h2> 
+    <span class="note">* = Required</span>
+    <form id="registerform" action="createaccount" method="POST">
+        <input type="hidden" name="json" value="true" />
+        <div>
+            <label for="Email">Email:*</label><br/>
+            <input type="text" name="email"/>
+        </div>
+        <div>
+            <label for="First">First Name:</label><br/>
+            <input type="text" name="first"/>
+        </div>
+        <div>
+            <label for="Last">Last Name:</label><br/>
+            <input type="text" name="last"/>
+        </div>
+        <div>
+            <label for="username">Username:*</label><br/>
+            <input type="text" name="username"/>
+        </div>
+        <div>
+            <label for="password">Password:*</label><br/>
+            <input type="password" name="password"/>
+        </div>
+        <div>
+            <label for="confirm">Confirm:*</label><br/>
+            <input type="password" name="confirm"/>
+        </div>
+        <div>
+            <input type="submit" value="Submit"/>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

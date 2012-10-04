@@ -1,0 +1,57 @@
+{# Resources/views/base.html.twig #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bowling Buddy</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    {% stylesheets '@BBMainBundle/Resources/public/css/*.css' output='css/compiled/main.css'%}
+        <link rel="stylesheet" href="{{asset_url}}" />
+    {% endstylesheets %}
+    {% javascripts '@BBMainBundle/Resources/public/js/include/*.js' output='js/compiled/include/include.js'%}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% block head %} {% endblock %}
+    </head>
+    <body>
+        <div id="main-wrapper">
+            <div id="header">
+                <div id="header-title">
+                    <a href="{{ path('homepage') }}">Bowling Buddy</a>
+                </div>
+                <div id="header-box">
+                    {% if app.user %}
+                        <div style="padding: 10px;text-align: right;">
+                            <h3>Welcome, <a href="{{ path('history') }}">{{app.user.username }}</a>!</h3>
+                            <a href="{{ path('logout') }}">Logout</a>
+                        </div>
+                    {% else %}
+                        <form id="loginform" method="POST" action="{{ path('login_check') }}">
+                            <input type="hidden" name="_target_path" value="/bb/history" />
+                            <div>
+                                <label for="username">Username:</label><br/>
+                                <input type="text" name="_username"/><br/>
+                            </div>
+                            <div>
+                                <label for="password">Password:</label><br/>
+                                <input type="password" name="_password"/><br/>
+                                <a href="{{ path('register') }}">Register</a>
+                            </div>
+                            <div>
+                                <br/>
+                                <input type="submit" value="Login"/>
+                            </div>
+                        </form>
+                    {% endif %}
+                    </div>
+                </div>
+                <div id="main-toolbar">
+                {% block toolbar %}
+                {% endblock %}
+                    </div>
+                    <div id="content">
+                {% block content %} 
+                {% endblock %}
+                        </div>
+                    </div>
+                </body>
+            </html>

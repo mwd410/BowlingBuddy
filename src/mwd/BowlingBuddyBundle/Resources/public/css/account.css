@@ -1,0 +1,62 @@
+/* 
+    Document   : account
+    Created on : Aug 25, 2012, 12:32:58 PM
+    Author     : Matt
+    Description:
+        Describes the style for various elements on the account page.
+*/
+
+.bowler-div {
+  border-radius: 15px;
+  border: 1px solid darkcyan;
+  background: #161616;
+  margin-top: 10px;
+  padding: 5px 0px;
+  width: 100%;
+}
+
+.bowler-name, .bowler-delete {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+
+
+.bowler-name {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.bowler-name, .bowler-div form {
+  display:inline;
+}
+
+.bowler-delete {
+  float: right;
+}
+
+.bowler-details {
+  display:none;
+  border: 1px solid #7f3706;
+  border-top-width: 0px;
+  background: #161616;
+  margin: 0 15px;
+  padding: 5px;
+}
+
+.bowler-details > div > span {
+  color:#ff6700;
+}
+
+.edit-name-form {
+  display: none;
+}
+
+.main-bowler-indicator {
+    display: none;
+}
+
+.edit-main-bowler {
+    margin: 20px;
+}

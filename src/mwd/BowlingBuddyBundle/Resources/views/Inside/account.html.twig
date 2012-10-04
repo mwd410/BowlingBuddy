@@ -1,0 +1,29 @@
+{% extends "BBMainBundle:Inside:inside.html.twig" %}
+
+{% block head %}
+    {% javascripts '@BBMainBundle/Resources/public/js/account.js'%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+<style>
+#account-tb {
+    background: #7f3706;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="top">
+    <h2>Bowlers</h2>
+    <span class="top-right">
+        <input type="text" id="create_bowler_name"/>
+        <a href="{{ path('createBowler') }}" id="create-bowler">Create Bowler</a>
+    </span>
+</div>
+
+<div id="bowlers">
+    {% for bowler in bowlers %}
+        {% include 'BBMainBundle:Bowler:bowler.html.twig' with {'bowler': bowler} %}
+    {% endfor %}
+</div>
+
+{% endblock %}

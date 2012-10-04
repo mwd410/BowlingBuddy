@@ -1,0 +1,249 @@
+/* 
+    Document   : mainStyle
+    Created on : Aug 15, 2012, 7:51:28 PM
+    Author     : Matt
+    Description:
+        Purpose of the stylesheet follows.
+
+    Color Palette:
+        121212 dark background
+        161616 lighter background
+        7f3706 dark orange
+        ff6700 light orange
+        00a7b2 dark blue
+        0A9CA5
+        00efff light blue
+*/
+
+* {
+    margin: 0;
+    font-family: Verdana;
+}
+
+table {
+    border-spacing: 0px;
+}
+
+input[type="text"], 
+input[type="password"], 
+input[type="submit"],
+input[type="button"],
+.change-button,
+.top ul{
+    background: #161616;
+    color: #ff6700;
+    border: 1px solid #7f3706;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background: #ff6700;
+    color: #161616;
+    border: 1px solid #ff6700;
+}
+
+select {
+    background: #161616;
+    color: #ff6700;
+    border: 1px solid #7f3706;
+    padding: 5px;
+}
+
+html, body {
+    min-height: 100%;
+    height: 100%;
+    background: #161616;
+    color: #FFFFFF;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #00efff;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #00efff;
+}
+
+body a:link, body a:visited, 
+body a:hover, body a:active {
+    color: #00efff;
+}
+
+body a:link, body a:visited,  
+body a:active {
+    text-decoration: none;
+}
+
+body a:hover {
+    text-decoration: underline;
+}
+
+#main-wrapper {
+    width:960px;
+    margin: 0 auto;
+    background: #212121;
+    min-height: 100%;
+}
+
+#main-toolbar {
+    background: black;
+    border-width: 0px;
+    border-radius: 0px;
+    color: white;
+}
+
+#header {
+    position: relative;
+    display: block;
+    color: #00efff;
+    height: 60px;
+}
+
+#header-title {
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 30px;
+}
+
+#header-title a {
+    text-decoration: none;
+}
+
+#header-box {
+    position:absolute;
+    display:table-row;
+    top:0;
+    right:0;
+    font-size: 12px;
+}
+
+
+#header-box div {
+    padding: 5px;
+    display: table-cell;
+    border-spacing: 5px;
+}
+
+
+#main-toolbar a:active {
+    color:darkcyan;
+    text-decoration: none;
+}
+
+#main-toolbar a:link, 
+#main-toolbar a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+
+#main-toolbar li {
+    list-style: none;
+    display: inline-block;
+    padding: 5px 10px;
+    min-width: 100px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+#main-toolbar li:hover {
+    background: #7F3706;
+}
+
+.toolbar-button{
+    width: 100px;
+    alignment-baseline: central;
+    text-align: center;
+    padding: 5px;
+}
+
+
+.toolbar-button:hover {
+    background: #7F3706;
+}
+
+#content {
+    padding: 10px;
+}
+
+.top h2, .top form {
+    display:inline;
+}
+
+.change-button {
+    padding: 5px;
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.change-button a {
+    color: #ff6700;
+}
+.change-button a:hover {
+    color: #ff6700;
+}
+.change-button:before {
+    content: "Change"
+}
+
+.change-button ul {
+    display: none;
+    list-style-type: none;
+    position: absolute;
+    top:28px;
+    left:-1px;
+    padding: 5px;
+}
+.change-button ul a {
+    color: #ff6700;
+}
+
+.top-right {
+    float:right;
+    margin-top: 5px;
+}
+
+.top-right a:link {
+    display: inline-block;
+    padding-left: 20px;
+    margin-right: 10px;
+}
+
+.register-form {
+    border: 1px solid #7f3706;
+    border-radius: 10px;
+    width: 154px;
+    overflow-x: hidden;
+    padding: 20px;
+    margin: 50px;
+}
+
+.register-form label {
+    color: #00efff;
+    font-size: 12px;
+}
+
+.register-form div {
+    margin: 5px 0px;
+}
+
+.register-form div:last-of-type {
+    text-align: end;
+}
+
+.register-form input[type="submit"] {
+    margin-top: 5px;
+}
+
+.note {
+    color: #ff6700;
+    font-size: 10px;
+}

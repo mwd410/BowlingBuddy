@@ -1,0 +1,7 @@
+{% extends 'BBMainBundle:Default:outside.html.twig' %}
+{% block content %}
+<h2>Login</h2>
+{% if error %}
+<div>{{error.message}}</div>
+{% endif %}
+{% endblock %}
