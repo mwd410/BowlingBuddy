@@ -1,0 +1,70 @@
+/**
+ * From BTHrow.php, the throw states:
+ *   const NEW_THROW = 0;
+ *   const FIRST = 1;
+ *   const STRIKE = 2;
+ *   const SPARE = 3;
+ *   const OPEN = 4;
+ *   const TENTH = 5;
+ */
+
+{
+    "game": {
+        "id" : 111,
+        "number" : 1,
+        "strings" : [
+        {
+            "id" : 222,
+            "bowler" : "Matt Deady",
+            "bowlerId" : 333,
+            "comments" : "",
+            "practice" : false,
+            "frames": [
+            {
+                "id" : 444,
+                "frameNumber" : 1,
+                "split" : false,
+                "throws" : [
+                {
+                    "id" : null,
+                    "state" : 1,
+                    "score" : 9,
+                    "display" : "9",
+                    "running" : 9,
+                    "pins" : "1111111110",
+                    "foul" : false,
+                    "ball" : null
+                },
+                {
+                    "id" : null,
+                    "state" : 3,
+                    "score" : 1,
+                    "display" : "/",
+                    "running" : 19,
+                    "pins" : "0000000001",
+                    "foul" : false,
+                    "ball" : null
+                }
+                ]
+            },
+            {
+                "id" : 555,
+                "frameNumber" : 2,
+                "throws" : [
+                {
+                    "id" : null,
+                    "state" : 2,
+                    "score" : 10,
+                    "display" : "X",
+                    "running" : -1,
+                    "pins" : "1111111111",
+                    "foul" : false,
+                    "ball" : null
+                }
+                ]
+            }
+            ]
+        }
+        ]
+    }
+}

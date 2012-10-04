@@ -30,6 +30,10 @@
                 </span>
             </div>
             <div id="sessions">
+                <div id="hide-frame-editor" style="display:none;">
+                    <div id="frame-editor">
+                    </div>
+                </div>
             {% if bowler %}
                 {% for session in bowler.sessions %}
                     {% include "BBMainBundle:Session:session.html.twig" with {"session" : session} %}
