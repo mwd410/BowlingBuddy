@@ -55,6 +55,7 @@ class String {
     {
         $this->throws = new \Doctrine\Common\Collections\ArrayCollection();
         $this->frames = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pratice = false;
     }
     
     /**
@@ -217,5 +218,25 @@ class String {
     public function getFrames()
     {
         return $this->frames;
+    }
+    
+    public function encode($recurseDepth = 0) {
+        $ret = array();
+        
+        $ret["id"] = $this->getId();
+        $ret["bowler"] = $this->getBowler()->getName();
+        $ret["bowlerId"] = $this->getBowler()->getId();
+        $ret["comments"] = $this->getComments();
+        $ret["practice"] = $this->getPractice();
+        if (is_int($recurseDepth) && $recurseDepth > 0) {
+            $recurseDepth--;
+            $frames = array();
+            foreach ($this->getFrames() as $frame) {
+                $frames[] = $frame->encode($recurseDepth);
+            }
+            $ret["frames"] = $frames;
+        }
+        
+        return $ret;
     }
 }

@@ -29,7 +29,9 @@ input[type="password"],
 input[type="submit"],
 input[type="button"],
 .change-button,
-.top ul{
+.hidden-popup > div,
+.hidden-popup > ul,
+.change-button ul{
     background: #161616;
     color: #ff6700;
     border: 1px solid #7f3706;
@@ -204,6 +206,41 @@ body a:hover {
 }
 .change-button ul a {
     color: #ff6700;
+}
+
+.hidden-popup {
+    position: relative;
+}
+
+.hidden-popup > div {
+    position: absolute;
+    display:none;
+    top:-1px;
+    left:-1px;
+    padding: 10px;
+    font-size: 10px;
+    box-shadow: 3px 3px 4px #000;
+}
+
+
+.hidden-popup ul {
+    list-style-type: none;
+    position: absolute;
+    top:28px;
+    left:-1px;
+    padding: 5px;
+}
+
+.corner-button {
+    position:absolute;
+    right:-1px;
+    top:-1px;
+    width:10px;height:10px;
+    border: 1px solid #7f3706;
+}
+
+.corner-button:hover {
+    background: #ff6700;
 }
 
 .top-right {

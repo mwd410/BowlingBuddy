@@ -64,3 +64,7 @@ createSession:
 createGame:
     pattern: /bb/creategame
     defaults: { _controller: BBMainBundle:Game:create }
+    
+getGameInfo:
+    pattern: /bb/getgameinfo/{id}
+    defaults: { _controller: BBMainBundle:Game:getInfo }

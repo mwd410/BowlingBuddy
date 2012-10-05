@@ -49,6 +49,7 @@ class Frame {
     public function __construct()
     {
         $this->throws = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->split = false;
     }
     
     /**
@@ -180,4 +181,23 @@ class Frame {
     {
         return $this->string;
     }
+    
+    public function encode($recurseDepth = 0) {
+        $ret = array();
+        
+        $ret["id"] = $this->getId();
+        $ret["frameNumber"] = $this->getFrameNumber();
+        $ret["split"] = $this->getSplit();
+        if (is_int($recurseDepth) && $recurseDepth > 0) {
+            $recurseDepth--;
+            $throws = array();
+            foreach($this->getThrows() as $throw) {
+                $throws[] = $throw->encode($recurseDepth);
+            }
+            $ret["throws"] = $throws;
+        }
+        
+        return $ret;
+    }
+    
 }

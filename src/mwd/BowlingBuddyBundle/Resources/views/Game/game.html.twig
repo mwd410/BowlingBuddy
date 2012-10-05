@@ -1,7 +1,7 @@
 <div id="game_{{game.id}}" class="game">
   <div class="game-header">
-    <span class="game-title">Game </span>
-    <span class="edit-game"><a href="#" gameId="{{game.id}}" sessionId="{{game.session.id}}">Edit</a></span>
+    <span class="game-title">Game {{game.number}}</span>
+    <span class="edit-game"><a href="{{ path('getGameInfo', {'id':game.id}) }}" gameId="{{game.id}}" sessionId="{{game.session.id}}">Edit</a></span>
   </div>
   <div class="game-details">
     <div class="game-details-wrapper">
@@ -28,6 +28,9 @@
         </tr>
         </thead>
         <tbody>
+            {% for string in game.strings %}
+                {% include "BBMainBundle:String:string.html.twig" with {'string' : string } %}
+            {% endfor %}
         </tbody>
       </table>
     </div>

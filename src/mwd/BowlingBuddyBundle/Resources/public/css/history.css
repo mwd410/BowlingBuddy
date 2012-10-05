@@ -189,6 +189,7 @@
   position: relative;
 }
 .add-bowler-to-game ul {
+  z-index: 100;
   display:none;
   padding: 5px;
   list-style-type: none;

@@ -2,6 +2,7 @@ $(document).ready(function(){
   
     var editingGame = 0;
     var allowEditStateChange = 1;
+    var editGame = null;
   
     /*
      * Add a Session
@@ -90,11 +91,21 @@ $(document).ready(function(){
             }
         });
     });
+    
+    $("#content").on("click",".corner-button",function(event) {
+       var $popup = $(this).find(">:first-child");
+       
+       $popup.fadeIn(200);
+       event.stopPropagation();
+    });
+    
+    
   
     /*
      * Edit a Game
      */
-    $("#content").on("click", ".edit-game a", function() {
+    $("#content").on("click", ".edit-game a", function(event) {
+        event.preventDefault();
         if (allowEditStateChange == 0) {
             return;
         }
@@ -107,8 +118,25 @@ $(document).ready(function(){
         var $gamesHeader = $("#game_list_header_"+sessionId);
         var $gameDetails = $("#game_"+gameId+" .game-details");
         if (editingGame == 0) {
+            var get_url = $(this).attr('href');
+            $.ajax({
+                type : "GET",
+                url : get_url,
+            
+                success:function(response) {
+                    var json = JSON.parse(response);
+                    if (json.success) {
+                        editGame = json.game;
+                        initGame(editGame);
+                    }
+                },
+            
+                error:function(error) {
+                    alert(error.message);
+                }
+            });            
             $bowlerContent.fadeToggle(100, null, function() {
-                $("#game_"+gameId+" .edit-game a").html("Done");
+                $("#game_"+gameId+" .edit-game a").html("Save");
                 $gamesHeader.animate({
                     height:'hide'
                 });
@@ -180,9 +208,20 @@ $(document).ready(function(){
         $(".add-bowler-to-game > ul").animate({
             height:"hide"
         },200);
+        $(".corner-button>:first-child").fadeOut(200);
     });
   
     $("#content").on("click",".add-bowler-to-game > ul", function(event) {
         event.stopPropagation();
     });
 });
+
+function initGame(game) {
+    var $game = $("game_"+game.id);
+    for (var i = 0; i < game.strings.length; i++) {
+        var string = game.strings[i];
+        var $string = $("string_"+game.strings[i].id);
+        $("#string_comments_"+string.id).val(string.comments);
+        $("#string_practice_"+string.id).prop("checked", string.practice);
+    }
+}

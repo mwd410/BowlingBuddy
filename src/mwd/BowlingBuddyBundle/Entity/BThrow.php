@@ -286,4 +286,18 @@ class BThrow {
     {
         return $this->bowler;
     }
+    
+    public function encode() {
+        $ret = array();
+        
+        $ret["id"] = $this->getId();
+        $ret["state"] = $this->getState();
+        $ret["score"] = $this->getScore();
+        $ret["running"] = $this->getRunningTotal();
+        $ret["pins"] = $this->getPins();
+        $ret["foul"] = $this->getFoul();
+        
+        return $ret;
+    }
+    
 }

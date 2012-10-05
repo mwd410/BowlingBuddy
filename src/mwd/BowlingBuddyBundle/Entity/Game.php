@@ -23,6 +23,11 @@ class Game {
     private $id;
     
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $number;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="Session", inversedBy="games")
      */
     private $session;
@@ -99,5 +104,38 @@ class Game {
     public function getStrings()
     {
         return $this->strings;
+    }
+    
+    public function getNumber() {
+        return $this->number;
+    }
+    
+    public function setNumber($number) {
+        $this->number = $number;
+        return $this;
+    }
+    
+    public function encode($recurseDepth = 0) {
+        $ret = array();
+        
+        $ret["id"] = $this->getId();
+        $ret["number"] = 0; // TODO fix this.
+        if (is_int($recurseDepth) && $recurseDepth > 0) {
+            $strings = array();
+            $recurseDepth--;
+            foreach ($this->getStrings() as $string) {
+                $strings[] = $string->encode($recurseDepth);
+            }
+            $ret["strings"] = $strings;
+        }
+        
+        return $ret;
+    }
+    
+    public function decode($json) {
+        if (!is_string($json)) {
+            $json = json_decode($json);
+        }
+        $this->setNumber($json["number"]);
     }
 }
