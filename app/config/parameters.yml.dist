@@ -4,10 +4,10 @@ parameters:
     database_port: null
     database_name: symfony
     database_user: root
-    database_password: tenorsax
+    database_password: ~
     mailer_transport: smtp
     mailer_host: localhost
     mailer_user: null
     mailer_password: null
     locale: en
-    secret: 6da219e12b1b27129f768a39d1df8245
+    secret: ~
