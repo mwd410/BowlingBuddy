@@ -1,8 +1,12 @@
+var currentThrow = null;
+var $currentThrow = null;
+
 $(document).ready(function(){
   
     var editingGame = 0;
     var allowEditStateChange = 1;
     var editGame = null;
+    var pinMode = 0;
   
     /*
      * Add a Session
@@ -92,14 +96,15 @@ $(document).ready(function(){
         });
     });
     
+    /**
+     * Edit String's comments and practice
+     */
     $("#content").on("click",".corner-button",function(event) {
-       var $popup = $(this).find(">:first-child");
+        var $popup = $(this).find(">:first-child");
        
-       $popup.fadeIn(200);
-       event.stopPropagation();
+        $popup.fadeIn(200);
+        event.stopPropagation();
     });
-    
-    
   
     /*
      * Edit a Game
@@ -192,6 +197,24 @@ $(document).ready(function(){
         }
     
     });
+    
+    $("#swap_mode").click(function() {
+        if (pinMode == 0) {
+            $("#pin_editor").animate({
+                height:"show"
+            });
+            $(".show-for-pins").show();
+            $(".show-for-score").hide();
+            pinMode = 1;
+        } else {
+            $("#pin_editor").animate({
+                height:"hide"
+            });
+            $(".show-for-pins").hide();
+            $(".show-for-score").show();
+            pinMode = 0;
+        }
+    });
   
   
     $("#content").on("click",".add-bowler-to-game > a", function(event) {
@@ -214,7 +237,24 @@ $(document).ready(function(){
     $("#content").on("click",".add-bowler-to-game > ul", function(event) {
         event.stopPropagation();
     });
+    
+    $(".pin-button").click(function(event) {
+        event.preventDefault();
+        $(this).toggleClass("pin-up").toggleClass("pin-down");
+    });
 });
+
+function getPinString() {
+    var string = "";
+    for (var i = 1; i <=10; i++) {
+        if ($("#pin_"+i).hasClass("pin-up")) {
+            string += "0";  // pin wasn't knocked down.
+        } else {            
+            string += "1";  // pin was knocked down.
+        }
+    }
+    return string;
+}
 
 function initGame(game) {
     var $game = $("game_"+game.id);
@@ -223,5 +263,30 @@ function initGame(game) {
         var $string = $("string_"+game.strings[i].id);
         $("#string_comments_"+string.id).val(string.comments);
         $("#string_practice_"+string.id).prop("checked", string.practice);
+        for (var j = 0; j < string.frames.length; j++) {
+            var frame = string.frames[i];
+            for (var k = 0; k < frame["throws"].length; k++) {
+                var bThrow = frame["throws"][k];
+                var $link = $('#string_'+string.id+'_frame_'+(j+1)+'_throw_'+k+' a');
+                console.log($link);
+                if (bThrow.state == 0) {            //NEW_THROW
+                    $link.html("?");
+                } else if (bThrow.state == 1) {     //FIRST
+                    $link.html(bThrow.score);
+                } else if (bThrow.state == 2) {     //STRIKE
+                    $link.html("X");
+                } else if (bThrow.state == 3) {     //SPARE
+                    $link.html("/");
+                } else if (bThrow.state == 4) {     //OPEN
+                    if (bThrow.score == 0) {
+                        $link.html("-");
+                    } else {
+                        $link.html(bThrow.score);
+                    }
+                } else if (bThrow.state == 5) {     //TENTH
+                    
+                }
+            }
+        }
     }
 }
